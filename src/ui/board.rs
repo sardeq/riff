@@ -365,17 +365,22 @@ pub fn context_menu(app: &mut RiffApp, ui: &mut Ui, s: &Sound) {
         app.edit_sound(&s.id, |x| x.favorite = !x.favorite);
         ui.close();
     }
-    ui.menu_button(format!("{}  Move to", ic::ARROW_RIGHT), |ui| {
-        for b in app.lib.boards.clone() {
-            if b.id == s.board {
-                continue;
+    let targets: Vec<_> = app.lib.boards.iter().filter(|b| b.id != s.board).cloned().collect();
+    let move_label = format!("{}  Move to", ic::ARROW_RIGHT);
+    if targets.is_empty() {
+        // No other board to move into: an empty submenu would render as a tiny blank popup.
+        ui.add_enabled(false, egui::Button::new(move_label))
+            .on_disabled_hover_text("Create another board first");
+    } else {
+        ui.menu_button(move_label, |ui| {
+            for b in targets {
+                if ui.button(&b.name).clicked() {
+                    app.edit_sound(&s.id, |x| x.board = b.id.clone());
+                    ui.close();
+                }
             }
-            if ui.button(&b.name).clicked() {
-                app.edit_sound(&s.id, |x| x.board = b.id.clone());
-                ui.close();
-            }
-        }
-    });
+        });
+    }
     if ui.button(format!("{}  Duplicate", ic::COPY)).clicked() {
         app.duplicate_sound(&s.id);
         ui.close();
