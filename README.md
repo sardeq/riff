@@ -159,4 +159,4 @@ Each sound is added with its author and license (CC0 / CC BY / CC BY-NC). Credit
 
 ## License
 
-Apache-2.0. Fonts: Inter and Noto Emoji (SIL Open Font License 1.1). Icons: Phosphor (MIT).
+GPL-3.0-or-later (see [LICENSE](LICENSE)). Fonts: Inter and Noto Emoji (SIL Open Font License 1.1). Icons: Phosphor (MIT).

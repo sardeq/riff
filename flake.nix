@@ -71,7 +71,7 @@
         meta = {
           description = "Soundboard with a virtual microphone, global hotkeys, local TTS and Freesound";
           homepage = "https://github.com/sardeq/riff";
-          license = lib.licenses.asl20;
+          license = lib.licenses.gpl3Plus;
           mainProgram = "riff";
           platforms = lib.platforms.linux;
         };
