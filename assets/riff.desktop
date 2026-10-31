@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Riff
+GenericName=Soundboard
+Comment=Play sounds and TTS into a virtual microphone
+Exec=riff
+Icon=riff
+Terminal=false
+Categories=AudioVideo;Audio;Utility;
+Keywords=soundboard;sound;microphone;tts;discord;
+StartupWMClass=riff
